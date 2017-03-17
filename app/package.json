@@ -1,0 +1,19 @@
+{
+  "name": "nodeboiler",
+  "version": "1.0.0",
+  "description": "boiler plate for all my future nodejs servers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/johnlimed/nodeboiler.git"
+  },
+  "author": "John",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnlimed/nodeboiler/issues"
+  },
+  "homepage": "https://github.com/johnlimed/nodeboiler#readme"
+}
