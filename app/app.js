@@ -1,7 +1,9 @@
-const express	= require('express');
-const	cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const path = require('path');
+import express	from 'express';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import path from 'path';
+import rethink from 'rethinkdb';
+import { dbconfig, dbName } from './server/config/dbconfig';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,28 +16,28 @@ app.use(cookieParser());
 // 	secret: 'BUGAAH4AS8DQW9KJVQ823ECd347la1421kfjqwqSEcRETD@shy09128316263',
 // }));
 
-// dot templating engine
-// app.engine('dot', engine.__express);
-// app.set('views', path.join(__dirname, 'server/views'));
-// app.set('view engine', 'dot');
-// app.enable('view cache');
-
-// passportjs module
-// require('./server/modules/passport')(passport);
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 // bodyparser module
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// connect to rethinkdb
+let connection = null;
+rethink.connect(dbconfig, (err, conn) => {
+	if (err) throw err;
+	connection = conn;
+	rethink.db(dbName).tableCreate('users').run(connection, (err, res) => {
+		if (err) throw err;
+		console.log(res);
+	});
+});
+
 // set static files
 app.use('/', express.static(path.join(__dirname, 'public')));
 
-const authRoute	= require('./server/routes/auth');
+// const authRoute	= require('./server/routes/auth');
 const route = require('./server/routes/router');
 
-app.use('/', authRoute);
+// app.use('/', authRoute);
 app.use('/', route); // last to capture all other routes to the frontend
 
 app.listen(port, () => {

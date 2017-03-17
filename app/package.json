@@ -4,7 +4,7 @@
   "description": "boiler plate for all my future nodejs servers",
   "main": "app.js",
   "scripts": {
-    "start": "nodejs app",
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/johnlimed/nodeboiler#readme",
   "dependencies": {
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "path": "^0.12.7",
-    "body-parser": "^1.15.1"
+    "rethinkdb": "^2.3.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
