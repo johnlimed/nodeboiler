@@ -1,9 +1,9 @@
-import express	from 'express';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import path from 'path';
-import rethink from 'rethinkdb';
-import { dbconfig, dbName } from './server/config/dbconfig';
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const path = require('path');
+const rethink = require('rethinkdb');
+const dbconfig = require('./server/config/dbconfig');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,10 +22,10 @@ app.use(bodyParser.json());
 
 // connect to rethinkdb
 let connection = null;
-rethink.connect(dbconfig, (err, conn) => {
+rethink.connect(dbconfig.dbconfig, (err, conn) => {
 	if (err) throw err;
 	connection = conn;
-	rethink.db(dbName).tableCreate('users').run(connection, (err, res) => {
+	rethink.db(dbconfig.dbName.dev).tableCreate('users').run(connection, (err, res) => {
 		if (err) throw err;
 		console.log(res);
 	});
