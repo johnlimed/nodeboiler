@@ -4,6 +4,7 @@
   "description": "boiler plate for all my future nodejs servers",
   "main": "app.js",
   "scripts": {
+    "start": "nodejs app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,22 @@
   "bugs": {
     "url": "https://github.com/johnlimed/nodeboiler/issues"
   },
-  "homepage": "https://github.com/johnlimed/nodeboiler#readme"
+  "homepage": "https://github.com/johnlimed/nodeboiler#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "path": "^0.12.7",
+    "body-parser": "^1.15.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-config-standard": "^7.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-plugin-standard": "^2.1.1"
+  }
 }
